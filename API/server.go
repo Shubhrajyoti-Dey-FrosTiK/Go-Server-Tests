@@ -35,8 +35,6 @@ func handleRequest(i context.Context, request events.APIGatewayProxyRequest) (ev
 	}
 
 	result, err := recruiterCollection.InsertOne(ctx, recruiter)
-	fmt.Println("upto there")
-	fmt.Println(result)
 
 	if err != nil {
 		return events.APIGatewayProxyResponse{Body: "failed!!", StatusCode: 200}, nil
