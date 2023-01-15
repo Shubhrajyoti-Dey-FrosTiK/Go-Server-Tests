@@ -1,6 +1,14 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: An AWS Lambda application that calls the Lambda API.
+
+Globals:
+  Parameters:
+  mongodb_url:
+    Type: String
+    Description: MongoDB Url
+    Default: ${MONGODB_URL}
+
 Resources:
   API:
     Type: AWS::Serverless::Function
@@ -21,4 +29,4 @@ Resources:
             Method: post
       Environment:
         Variables:
-          MONGODB_URL: ${MONGODB_URL}
+          MONGODB_URL: !Ref mongodb_url
