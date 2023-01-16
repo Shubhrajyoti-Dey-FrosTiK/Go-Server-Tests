@@ -4,10 +4,10 @@ Description: An AWS Lambda application that calls the Lambda API.
 
 Globals:
   Parameters:
-  mongodb_url:
-    Type: String
-    Description: MongoDB Url
-    Default: ${MONGODB_URL}
+    mongodb_url:
+      Type: String
+      Description: MongoDB Url
+      Default: ${MONGODB_URL}
 
 Resources:
   API:
