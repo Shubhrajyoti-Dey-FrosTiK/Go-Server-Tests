@@ -6,12 +6,13 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
-	"time"
 	"os"
+	"time"
 )
 
 func ConnectDB() *mongo.Client {
 	Mongo_URL := os.Getenv("MONGODB_URL")
+	fmt.Println(Mongo_URL)
 	client, err := mongo.NewClient(options.Client().ApplyURI(Mongo_URL))
 
 	if err != nil {
