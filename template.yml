@@ -3,7 +3,7 @@ Transform: 'AWS::Serverless-2016-10-31'
 Description: An AWS Lambda application that calls the Lambda API.
 
 Parameters:
-  mongodb_url:
+  mongodburl:
     Type: String
     Description: MongoDB Url
     Default: ${MONGODB_URL}
@@ -28,4 +28,4 @@ Resources:
             Method: post
       Environment:
         Variables:
-          MONGODB_URL: !Ref mongodb_url
+          MONGODB_URL: !Ref mongodburl
