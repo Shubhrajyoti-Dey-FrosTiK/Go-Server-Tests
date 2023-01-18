@@ -18,9 +18,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
       # sam build
-      - run: sam build --use-container --parameter-overrides 'ParameterKey=mongodburl,ParameterValue=${{ secrets.MONGODB_URL }}'
+      - run: sam build --parameter-overrides 'ParameterKey=mongodburl,ParameterValue=${{ secrets.MONGODB_URL }}'
 
 # Run Unit tests- Specify unit tests here
 
 # sam deploy
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-go-api --s3-bucket tpc-code-build --capabilities CAPABILITY_IAM --region ap-south-1
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-go-api --s3-bucket tpc-code-build --capabilities CAPABILITY_IAM --region ap-south-1 --architectures arm64
