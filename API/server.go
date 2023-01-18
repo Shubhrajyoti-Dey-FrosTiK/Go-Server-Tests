@@ -14,8 +14,9 @@ import (
 	// "go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+var DB = database.ConnectDB()
+
 func handleRequest(i context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	var DB = database.ConnectDB()
 	var recruiterCollection = getcollection.GetCollection(DB, "Recruiter")
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
@@ -35,6 +36,8 @@ func handleRequest(i context.Context, request events.APIGatewayProxyRequest) (ev
 	}
 
 	result, err := recruiterCollection.InsertOne(ctx, recruiter)
+
+	fmt.Println(err, result)
 
 	if err != nil {
 		return events.APIGatewayProxyResponse{Body: "failed!!", StatusCode: 200}, nil
